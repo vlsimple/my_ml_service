@@ -1,12 +1,3 @@
-"""
-WSGI config for server project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
-"""
-
 import os
 from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.settings')
@@ -42,6 +33,6 @@ try:
                             algorithm_version="0.0.1",
                             owner="Piotr",
                             algorithm_description="Extra Trees with simple pre- and post-processing",
-                            algorithm_code=inspect.getsource(RandomForestClassifier))
+                            algorithm_code=inspect.getsource(ExtraTreesClassifier))
 except Exception as e:
     print("Exception while loading the algorithms to the registry,", str(e))

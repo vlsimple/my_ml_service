@@ -40,11 +40,10 @@ class MLAlgorithmStatus(models.Model):
 
     Attributes:
         status: The status of algorithm in the endpoint. Can be: testing, staging, production, ab_testing.
-        active: The boolean flag which point to currently active status.
         created_by: The name of creator.
         created_at: The date of status creation.
         parent_mlalgorithm: The reference to corresponding MLAlgorithm.
-
+        parent_endpoint: The reference to corresonding Endpoint.
     '''
     status = models.CharField(max_length=128)
     active = models.BooleanField()
@@ -58,7 +57,6 @@ class MLRequest(models.Model):
 
     Attributes:
         input_data: The input data to ML algorithm in JSON format.
-        full_response: The response of the ML algorithm.
         response: The response of the ML algorithm in JSON format.
         feedback: The feedback about the response in JSON format.
         created_at: The date when request was created.
@@ -70,6 +68,7 @@ class MLRequest(models.Model):
     feedback = models.CharField(max_length=10000, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     parent_mlalgorithm = models.ForeignKey(MLAlgorithm, on_delete=models.CASCADE)
+
 
 class ABTest(models.Model):
     '''
